@@ -1,9 +1,31 @@
 server:
   port: 9006
 
+# External URLs
+prod:
+  url: https://recycle-sync.vercel.app
+
+# Local URLs
+dev:
+  url: http://localhost:5173
+
+# Active profile
 spring:
   application:
     name: paypal-service
+  profiles:
+    active: dev
+
+
+paypal:
+  client-id:
+  client-secret:
+  mode: sandbox # sandbox is used for development testing, for production should be used 'live' instead
+
+paypal-redirects:
+  urls:
+    cancelUrl: "http://localhost:9006/payment/cancel"
+    successUrl: "http://localhost:9006/payment/success"
 
 eureka:
   client:
